@@ -13,7 +13,7 @@ func TestJwt(t *testing.T) {
 
 	//generate JWT
 	token := jwtService.GenerateToken("email@gmail.com")
-	fmt.Println(token)
+	fmt.Println("token :", token)
 
 	fmt.Println("-----------------------------------")
 	//validation JWT

@@ -1,0 +1,2 @@
+# CollectionGoCode
+Collection Golang Code

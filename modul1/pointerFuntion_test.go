@@ -1,8 +1,8 @@
 package modul1
 
 import (
-	d "Dasar2Go/modul1/helper"
 	"fmt"
+	d "github.com/MCPutro/CollectionGoCode/modul1/helper"
 	"testing"
 )
 

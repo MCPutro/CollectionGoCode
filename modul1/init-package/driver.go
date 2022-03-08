@@ -1,8 +1,8 @@
 package main
 
 import (
-	db "Dasar2Go/modul1/init-package/database"
 	"fmt"
+	db "github.com/MCPutro/CollectionGoCode/modul1/init-package/database"
 )
 
 func main() {

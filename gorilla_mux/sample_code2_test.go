@@ -1,5 +1,7 @@
 package gorilla_mux
 
+//using auth for specific API
+
 import (
 	"encoding/json"
 	"fmt"

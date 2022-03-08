@@ -1,5 +1,7 @@
 package gorilla_mux
 
+//using middleware
+
 import (
 	"fmt"
 	"github.com/MCPutro/CollectionGoCode/gorilla_mux/middleware"

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{.Name}}</title> {{/* nama attr harus public*/}}
+</head>
+<body>
+    <table>
+        <tr>
+            <td>Name</td>
+            <td>: {{.Name}}</td>
+        </tr>
+        {{if ne .Name "aku"}}
+            <tr>
+                <td>berubah</td>
+                <td>: {{.Name}}</td>
+            </tr>
+        {{else if eq .Name "kamu"}}
+            <tr>
+                <td>berubah lagi</td>
+                <td>: {{.Name}}</td>
+            </tr>
+        {{else}}
+            <tr>
+                <td>berubah ?</td>
+                <td>oke deh</td>
+            </tr>
+        {{end}}
+        <tr>
+            <td>Address</td>
+            {{$alamat := .AddressXX.Street}}
+            <td style="text-transform: capitalize;">:{{$alamat}}</td>
+        </tr>
+        {{with .AddressXX}}
+            <tr>
+                <td>Address</td>
+                <td style="text-transform: capitalize;">: {{.Street}}</td>
+            </tr>
+        {{end}}
+        <tr>
+            <td>Hobbies</td>
+            <td>{{range $index, $elem := .Hobbies}}
+                    {{$index}}. {{$elem}},
+                {{end}}</td>
+        </tr>
+    </table>
+    <h1>{{.SayHallo .Name $alamat}}</h1>
+</body>
+</html>

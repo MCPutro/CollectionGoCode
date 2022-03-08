@@ -1,0 +1,12 @@
+### server
+GET localhost:1212/products
+Auth: RAHASIA
+
+
+### server1 + auth
+GET localhost:1212/auth/api
+x-access-token: qwe
+
+
+### server1
+GET localhost:1212/user/admin

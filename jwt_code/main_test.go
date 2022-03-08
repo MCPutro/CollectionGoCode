@@ -1,15 +1,14 @@
-package CollectionGoCode
+package jwt_code
 
 import (
 	"fmt"
-	"github.com/MCPutro/CollectionGoCode/jwt_code"
 	"github.com/golang-jwt/jwt/v4"
 	"log"
 	"testing"
 )
 
 func TestJwt(t *testing.T) {
-	jwtService := jwt_code.NewJwtServiceImpl("secret-key", "MCP")
+	jwtService := NewJwtServiceImpl("secret-key", "MCP")
 
 	//generate JWT
 	token := jwtService.GenerateToken("email@gmail.com")

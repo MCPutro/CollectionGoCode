@@ -8,7 +8,7 @@ import (
 )
 
 type jwtCustomClaim struct {
-	UserID string `json:"user_id"`
+	ID string
 	jwt.RegisteredClaims
 }
 
@@ -17,9 +17,13 @@ type JwtServiceImpl struct {
 	issuer    string
 }
 
-func (j *JwtServiceImpl) GenerateToken(UserId string) string {
+func NewJwtServiceImpl(secretKey string, issuer string) JwtService {
+	return &JwtServiceImpl{secretKey: secretKey, issuer: issuer}
+}
+
+func (j *JwtServiceImpl) GenerateToken(ID string) string {
 	claims := jwtCustomClaim{
-		UserID: UserId,
+		ID: ID,
 		RegisteredClaims: jwt.RegisteredClaims{
 			Issuer:    j.issuer,
 			ExpiresAt: jwt.NewNumericDate(time.Now().AddDate(0, 0, 1)),
@@ -36,8 +40,8 @@ func (j *JwtServiceImpl) GenerateToken(UserId string) string {
 	return ss
 }
 
-func (j *JwtServiceImpl) ValidateToken(token string) (*jwt.Token, error) {
-	t, err := jwt.Parse(token, func(t_ *jwt.Token) (interface{}, error) {
+func (j *JwtServiceImpl) ValidateToken(Token string) (*jwt.Token, error) {
+	t, err := jwt.Parse(Token, func(t_ *jwt.Token) (interface{}, error) {
 		if _, ok := t_.Method.(*jwt.SigningMethodHMAC); !ok {
 			return nil, fmt.Errorf("unexpected signing method %v", t_.Header["alg"])
 		}

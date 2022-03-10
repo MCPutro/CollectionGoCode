@@ -13,10 +13,10 @@ func TestStrconvFunc(t *testing.T) {
 		oktal 8
 		decimal 10
 		hexadecimal 16
-	 mengacu pada data yg akan di convert
+	 mengacu pada data input yg akan di convert
 	- bitSize : tujuan akhir
 	**/
-	var str = "12d680"
+	var str = "12d680" //merupakan data hexadecimal dalam bentuk string
 	var num, err = strconv.ParseInt(str, 16, 32)
 
 	if err == nil {

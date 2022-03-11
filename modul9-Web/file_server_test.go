@@ -1,7 +1,5 @@
 package modul9_Web
 
-// http://localhost:8080/static/index.html||.css
-
 import (
 	"embed"
 	"io/fs"
@@ -9,13 +7,15 @@ import (
 	"testing"
 )
 
+// http://localhost:8080/static/index.html||.css
 func TestFileServer(t *testing.T) {
 
 	directory := http.Dir("./resources")
 	fileServer := http.FileServer(directory)
 
 	mux := http.NewServeMux()
-	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
+	//mux.Handle("/static", fileServer) // hasil -> /resources/static/index.css
+	mux.Handle("/static/", http.StripPrefix("/static", fileServer)) // http.StripPrefix menghapus prefix /static
 
 	server := http.Server{
 		Addr:    "localhost:8080",
@@ -31,11 +31,13 @@ func TestFileServer(t *testing.T) {
 //go:embed resources
 var resources embed.FS
 
+// http://localhost:8080/static/index.html||.css
 func TestFileServerGolangEmbed(t *testing.T) {
 	directory, _ := fs.Sub(resources, "resources")
 	fileServer := http.FileServer(http.FS(directory))
 
 	mux := http.NewServeMux()
+	//mux.Handle("/static", fileServer)
 	mux.Handle("/static/", http.StripPrefix("/static", fileServer))
 
 	server := http.Server{

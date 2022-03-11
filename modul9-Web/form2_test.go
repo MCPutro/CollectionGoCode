@@ -38,7 +38,7 @@ func input(w http.ResponseWriter, r *http.Request) {
 func TestMainServer(t *testing.T) {
 	http.HandleFunc("/", index)
 	http.HandleFunc("/me", me)
-	http.HandleFunc("/input", input)
+	http.HandleFunc("/input/test", input)
 	err := http.ListenAndServe(":6969", nil)
 
 	if err != nil {

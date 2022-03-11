@@ -27,3 +27,15 @@ func TestMap(t *testing.T) {
 
 	fmt.Println(color2)
 }
+
+func TestMap2(t *testing.T) {
+	list := map[string]bool{
+		"user/SignIn": true,
+		"user/SignUp": true,
+	}
+
+	path := "/book/SignIn"
+
+	fmt.Println(">>", list[path])
+
+}

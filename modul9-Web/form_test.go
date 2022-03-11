@@ -29,6 +29,7 @@ func checkForm(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "ok: "+value1+" -> "+value2)
 }
 
+//server
 func TestSampleForm(t *testing.T) {
 	PORT := os.Getenv("PORT")
 	if PORT == "" {
@@ -42,6 +43,7 @@ func TestSampleForm(t *testing.T) {
 	log.Fatal(http.ListenAndServe(":"+PORT, myRoute))
 }
 
+//unit test
 func TestFormPost(t *testing.T) {
 	requestBody := strings.NewReader("param1=aku&param2=adalah")
 	request := httptest.NewRequest(http.MethodPost, "http://localhost:8080", requestBody)

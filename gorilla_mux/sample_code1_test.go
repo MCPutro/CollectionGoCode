@@ -12,7 +12,7 @@ import (
 
 func TestServer(t *testing.T) {
 	r := mux.NewRouter()
-	r.HandleFunc("/", chectAPI)
+	r.HandleFunc("/", checkAPI)
 	r.HandleFunc("/products", ProductsHandler)
 	r.HandleFunc("/articles", ArticlesHandler)
 	//http.Handle("/", r)
@@ -24,7 +24,7 @@ func TestServer(t *testing.T) {
 	//http.ListenAndServe(":1212", r)
 }
 
-func chectAPI(w http.ResponseWriter, r *http.Request) {
+func checkAPI(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprint(w, "ok")
 }
 
